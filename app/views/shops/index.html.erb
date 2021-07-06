@@ -20,7 +20,7 @@
         <td><%= product.description %></td>
         <td><%= product.cost %></td>
         <td><%= product.img_url %></td>
-        <td><%= link_to 'Visit', shop_path(product) %></td>
+        <td><%= link_to 'Visit', new_order_item_path(:prod_id => product.id) %></td>
 
     <% end %>
   </tbody>

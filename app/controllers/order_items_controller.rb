@@ -1,12 +1,12 @@
 class OrderItemsController < ApplicationController
   def new
     @order_item=OrderItem.new
+    @product=Product.find(params[:prod_id])
   end
 
   def create
     order_item=OrderItem.create(order_item_params)
   end
-
   private
 
   def order_item_params
