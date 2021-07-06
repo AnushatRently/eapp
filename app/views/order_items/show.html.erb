@@ -1,0 +1,11 @@
+<h1><%=@order_item.product.title%></h1>
+
+<h1>Unit prize <%=@order_item.product.cost%></h1>
+
+<h1> Count: <%=@order_item.quantity%></h1>
+
+<% total = (@order_item.product.cost).to_i * @order_item.quantity.to_i %>
+
+<h2>Total:  <%= total.to_d %> Only /_ </h2>
+
+<%= link_to "Confirm Your Order", new_order_path(:order_id=>@order_item.id, :total=>total.to_d) %>
