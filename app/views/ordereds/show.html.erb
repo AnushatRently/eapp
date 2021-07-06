@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= (Product.find(@id)).title %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @ordered.order_item.quantity %>
+</p>
+
+<p>
+  <strong>Total:</strong>
+  <%= @ordered.total %>
+</p>
+
+<%= link_to 'Edit', edit_ordered_path(@ordered) %> |
+<%= link_to 'Back', shops_path %>

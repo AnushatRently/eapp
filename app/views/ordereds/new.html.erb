@@ -1,0 +1,11 @@
+<h2> Ordering <%=@order_item.quantity%> <%=@order_item.product.title%> </h2>
+
+<h2>Total Cost: <%= @total %> </h2>
+
+<br/>
+
+
+<%= render 'form', ordered: @ordered %>
+<br/>
+
+<h3><%= link_to 'Back', ordereds_path %></h3>
