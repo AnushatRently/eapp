@@ -21,5 +21,10 @@
   <%= image_tag(@product.img_url, :size => "260x180") %>
 </p>
 
+<p>
+  <strong>Available Count:</strong>
+  <%= @product.available %>
+</p>
+
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
