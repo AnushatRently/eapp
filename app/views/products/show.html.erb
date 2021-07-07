@@ -16,8 +16,9 @@
 </p>
 
 <p>
-  <strong>Img url:</strong>
-  <%= @product.img_url %>
+  <strong>Image:</strong>
+  <br/>
+  <%= image_tag(@product.img_url, :size => "260x180") %>
 </p>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
