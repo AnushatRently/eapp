@@ -9,6 +9,7 @@
     <tr>
       <th>Title</th>
       <th>Quantity</th>
+      <th>Image</th>
       <th>Total</th>
       <th colspan="3"></th>
     </tr>
@@ -20,6 +21,7 @@
         <% if current_user.id.to_i == ordered.user_id.to_i %>
         <td><%= Product.find(ordered.order_item.product_id).title %></td>
         <td><%= ordered.order_item.quantity %></td>
+        <td><%= image_tag(Product.find(ordered.order_item.product_id).img_url, :size => "260x180") %></td>
         <td><%= ordered.total %></td>
         <td><%= link_to 'Show', ordered %></td>
         <% end %>

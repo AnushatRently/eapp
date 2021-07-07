@@ -8,7 +8,7 @@
       <th>Title</th>
       <th>Description</th>
       <th>Cost</th>
-      <th>Img url</th>
+      <th>Image</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,7 +19,7 @@
         <td><%= product.title %></td>
         <td><%= product.description %></td>
         <td><%= product.cost %></td>
-        <td><%= product.img_url %></td>
+        <td><%= image_tag(product.img_url, :size => "260x180") %></td>
         <td><%= link_to 'Visit', new_order_item_path(:prod_id => product.id) %></td>
 
     <% end %>

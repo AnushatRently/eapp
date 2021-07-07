@@ -15,6 +15,12 @@
   <%= @ordered.total %>
 </p>
 
+<p>
+  
+  <br/>
+  <%= image_tag((Product.find(@id)).img_url, :size => "260x180") %>
+</p>
+
 <h3> Order Will be get delivered to: </h3>
 <br/>
 <%= current_user.name%>,<%= current_user.door_no%>,<%= current_user.street%>,<%= current_user.city%>,<%= current_user.state%>,PINCODE:<%= current_user.pincode%>
@@ -22,5 +28,5 @@
 Contact Number: <%= current_user.phone_number%>
 <br/>
 
-<%= link_to 'Edit', edit_order_item_path(:prod_id => @id, :id=>@ordered.order_item.id,:od=>@ordered.id ) %> 
+<%= link_to 'Edit', edit_order_item_path(:prod_id => @id, :id=>@ordered.order_item.id,:od=>@ordered.id ) %>
 <%= link_to 'Back', shops_path %>
