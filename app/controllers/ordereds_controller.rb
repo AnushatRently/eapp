@@ -1,5 +1,5 @@
 class OrderedsController < ApplicationController
-  before_action :set_ordered, only: %i[ show edit update destroy ]
+  before_action :set_ordered, only: %i[ show update destroy ]
 
   # GET /ordereds or /ordereds.json
   def index
@@ -20,6 +20,9 @@ class OrderedsController < ApplicationController
 
   # GET /ordereds/1/edit
   def edit
+    @ordered = Ordered.find(params[:id])
+    @order_item=OrderItem.find(@ordered.order_item.id)
+    @total=(@order_item.product.cost).to_i * @order_item.quantity.to_i
   end
 
   # POST /ordereds or /ordereds.json

@@ -1,6 +1,7 @@
+
 <p id="notice"><%= notice %></p>
 
-<h1>Products</h1>
+<h1>My Products</h1>
 
 <table class="table table-success table-striped">
   <thead>
@@ -16,19 +17,20 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
+        <% if current_user.id.to_i == product.user_id.to_i %>
         <td><%= product.title %></td>
         <td><%= product.description %></td>
         <td><%= product.cost %></td>
         <td><%= product.img_url %></td>
-        <td><%= link_to 'Visit', new_order_item_path(:prod_id => product.id) %></td>
-
+        <td><%= link_to 'Show', product %></td>
+        <td><%= link_to 'Edit', edit_product_path(product) %></td>
+        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-</br>
-
-
-<h2><%= link_to "My Orders",myorders_index_path(current_user) %></h2>
+<h3> <%= link_to "Add Products", new_product_path %> </h3>

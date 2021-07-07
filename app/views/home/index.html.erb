@@ -4,5 +4,5 @@
 <% if current_user.role ==1 %>
 <h3><%=link_to "Continue as Buyer",shops_path %></h3>
 <%else%>
-<h3><%=link_to "Continue as Seller",products_path %></h3>
+<h3><%=link_to "Continue as Seller",seller_console_index_path %></h3>
 <%end%>

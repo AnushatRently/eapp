@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  get 'seller_console/index'
+  get 'myorders/index'
   get 'home/index'
   resources :ordereds
   devise_for :users
