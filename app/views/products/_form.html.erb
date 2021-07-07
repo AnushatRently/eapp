@@ -11,36 +11,36 @@
     </div>
   <% end %>
 
-  <div class="field">
+
+
+  <div class="field" >
     <%= form.hidden_field :user_id,:value=>current_user.id %>
   </div>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="col-sm-5"class="form-label">
+    <%= form.text_field :title, class:"form-control",placeholder:"Title" %>
   </div>
+<br/>
+  <div class="col-sm-5" class="form-label">
+    <%= form.text_field :description,class:"form-control",placeholder:"Description" %>
+  </div>
+<br/>
+  <div class="col-sm-5" class="form-label">
+    <%= form.text_field :cost,class:"form-control",placeholder:"Cost of the Product" %>
+  </div>
+<br/>
+  <div class="col-sm-5" class="form-label">
+    <%= form.file_field :img_url,class:"form-control",placeholder:"Image" %>
+  </div>
+<br/>
+  <div class="col-sm-5" class="form-label">
+    <%= form.number_field :available,class:"form-control",placeholder:"Available Count" %>
+  </div>
+<br/>
+  <div class="col-sm-5">
+    <%= form.submit class:"btn btn-success" %>
+  </div>
+<br/>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
 
-  <div class="field">
-    <%= form.label :cost %>
-    <%= form.text_field :cost %>
-  </div>
-
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :img_url %>
-  </div>
-
-  <div class="field">
-    <%= form.label :Available_Count %>
-    <%= form.number_field :available %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
