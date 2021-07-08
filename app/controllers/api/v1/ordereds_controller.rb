@@ -1,13 +1,14 @@
 class Api::V1::OrderedsController < ApplicationController
   before_action :set_ordered, only: %i[ show edit update destroy ]
-
+  respond_to :json
+  protect_from_forgery with: :null_session
   def index
     @ordereds = Ordered.all
-    render json: @ordereds
+    respond_with @ordereds
   end
 
   def show
-    render json: @ordered
+    respond_with  @ordered
   end
 
 
@@ -16,9 +17,9 @@ class Api::V1::OrderedsController < ApplicationController
     @ordered = ordered.new(ordered_params)
 
     if @ordered.save
-      render json: @ordered
+      respond_with json: @ordered
     else
-      render error: {error: 'Unable to create user.'}, status:400
+      respond_with error: {error: 'Unable to create user.'}, status:400
     end
 
   end
@@ -27,9 +28,9 @@ class Api::V1::OrderedsController < ApplicationController
   def update
     if @ordered
       @ordered.update(ordered_params)
-      render json: {message: "User Successfully Updated."}, status:200
+      respond_with json: {message: "User Successfully Updated."}, status:200
     else
-      render message: {error: 'Unable to Update user.'}, status:400
+      respond_with message: {error: 'Unable to Update user.'}, status:400
     end
   end
 
@@ -37,9 +38,9 @@ class Api::V1::OrderedsController < ApplicationController
   def destroy
     if @ordered
       @ordered.destroy
-      render json: {message: "User Successfully Deleted."}, status:200
+      respond_with json: {message: "User Successfully Deleted."}, status:200
     else
-      render message: {error: 'Unable to delete user.'}, status:400
+      respond_with message: {error: 'Unable to delete user.'}, status:400
     end
   end
 

@@ -1,30 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= (Product.find(@id)).title %>
-</p>
-
-<p>
-  <strong>Quantity:</strong>
-  <%= @ordered.order_item.quantity %>
-</p>
-
-<p>
-  <strong>Total:</strong>
-  <%= @ordered.total %>
-</p>
-
-<p>
-
-  <br/>
-  <%= image_tag((Product.find(@id)).img_url, :size => "260x180") %>
-</p>
-
-<%= link_to 'Edit', edit_order_item_path(:prod_id => @id, :id=>@ordered.order_item.id,:od=>@ordered.id ) %>
-<%= link_to 'Back', shops_path %>
-
-<h1> Delivery Address </h1>
+<h1>Addresses</h1>
 
 <table>
   <thead>
@@ -46,7 +22,6 @@
   <tbody>
     <% @addresses.each do |address| %>
       <tr>
-        <% if address.user_id.to_i == current_user.id.to_i %>
         <td><%= address.name %></td>
         <td><%= address.age %></td>
         <td><%= address.phone_number %></td>
@@ -60,8 +35,11 @@
         <td><%= link_to 'Show', address %></td>
         <td><%= link_to 'Edit', edit_address_path(address) %></td>
         <td><%= link_to 'Destroy', address, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<br>
+
+<%= link_to 'New Address', new_address_path %>

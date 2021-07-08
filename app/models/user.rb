@@ -6,10 +6,8 @@ class User < ApplicationRecord
   has_many:order_items,dependent: :destroy
   has_many:ordereds, dependent: :destroy
   has_many:products, dependent: :destroy
-  
+  has_many:addresses, dependent: :destroy
 
-  validates :email,:role,:name,:age,:phone_number,:door_no,:street,:city,:state,:pincode,:district, presence:true
 
-  validates :phone_number, numericality: true
-  validates :phone_number,length:{is:10, message:" should be of 10 digits"}
+
 end

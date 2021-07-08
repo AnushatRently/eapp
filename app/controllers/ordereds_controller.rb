@@ -1,4 +1,5 @@
 class OrderedsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_ordered, only: %i[ show update destroy ]
 
   # GET /ordereds or /ordereds.json
@@ -9,6 +10,8 @@ class OrderedsController < ApplicationController
   # GET /ordereds/1 or /ordereds/1.json
   def show
     @id=@ordered.order_item.product_id
+    @user=@ordered.user
+    @addresses=Address.all
   end
 
   # GET /ordereds/new

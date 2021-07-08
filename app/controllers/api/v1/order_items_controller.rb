@@ -1,13 +1,13 @@
 class Api::V1::OrderItemsController < ApplicationController
   before_action :set_order_item, only: %i[ show edit update destroy ]
-
+  
   def index
     @order_items = OrderItem.all
-    render json: @order_items
+    render json:@order_items
   end
 
   def show
-    render json: @order_item
+    render json:@order_item
   end
 
 
@@ -16,7 +16,7 @@ class Api::V1::OrderItemsController < ApplicationController
     @order_item = order_item.new(order_item_params)
 
     if @order_item.save
-      render json: @order_item
+      respond_with json: @order_item
     else
       render error: {error: 'Unable to create user.'}, status:400
     end

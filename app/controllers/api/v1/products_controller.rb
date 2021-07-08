@@ -1,13 +1,15 @@
 class Api::V1::ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
+  respond_to :json
+  protect_from_forgery with: :null_session
 
   def index
     @products = Product.all
-    render json: @products
+    respond_with json: @products
   end
 
   def show
-    render json: @product
+    respond_with json: @product
   end
 
 
@@ -16,9 +18,9 @@ class Api::V1::ProductsController < ApplicationController
     @product = product.new(product_params)
 
     if @product.save
-      render json: @product
+      respond_with json: @product
     else
-      render error: {error: 'Unable to create user.'}, status:400
+      respond_with error: {error: 'Unable to create user.'}, status:400
     end
 
   end
@@ -27,9 +29,9 @@ class Api::V1::ProductsController < ApplicationController
   def update
     if @product
       @product.update(product_params)
-      render json: {message: "User Successfully Updated."}, status:200
+      respond_with json: {message: "User Successfully Updated."}, status:200
     else
-      render message: {error: 'Unable to Update user.'}, status:400
+      respond_with message: {error: 'Unable to Update user.'}, status:400
     end
   end
 
@@ -37,9 +39,9 @@ class Api::V1::ProductsController < ApplicationController
   def destroy
     if @product
       @product.destroy
-      render json: {message: "User Successfully Deleted."}, status:200
+      respond_with json: {message: "User Successfully Deleted."}, status:200
     else
-      render message: {error: 'Unable to delete user.'}, status:400
+      respond_with message: {error: 'Unable to delete user.'}, status:400
     end
   end
 

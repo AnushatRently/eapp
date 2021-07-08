@@ -1,13 +1,16 @@
-class Api::V1::UsersController < ApplicationController
+module Api
+module V1
+  class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
+  respond_to :json
+  protect_from_forgery with: :null_session
 
   def index
-    @users = User.all
-    render json: @users
+    respond_with json:{user:User.all}
   end
 
   def show
-    render json: @user
+    respond_to json: @user
   end
 
 
@@ -16,9 +19,9 @@ class Api::V1::UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      render json: @user
+      respond_to json: @user
     else
-      render error: {error: 'Unable to create user.'}, status:400
+      respond_to error: {error: 'Unable to create user.'}, status:400
     end
 
   end
@@ -27,9 +30,9 @@ class Api::V1::UsersController < ApplicationController
   def update
     if @user
       @user.update(user_params)
-      render json: {message: "User Successfully Updated."}, status:200
+      respond_to json: {message: "User Successfully Updated."}, status:200
     else
-      render message: {error: 'Unable to Update user.'}, status:400
+      respond_to message: {error: 'Unable to Update user.'}, status:400
     end
   end
 
@@ -37,9 +40,9 @@ class Api::V1::UsersController < ApplicationController
   def destroy
     if @user
       @user.destroy
-      render json: {message: "User Successfully Deleted."}, status:200
+      respond_to json: {message: "User Successfully Deleted."}, status:200
     else
-      render message: {error: 'Unable to delete user.'}, status:400
+      respond_to message: {error: 'Unable to delete user.'}, status:400
     end
   end
 
@@ -54,4 +57,8 @@ class Api::V1::UsersController < ApplicationController
       params.require(:user).permit(:email , :password , :current_password,:password_confirmation , :role,:name, :age, :phone_number,:door_no,:street,:city, :district, :pincode, :state )
     end
 
+end
+
+
+end
 end
