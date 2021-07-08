@@ -33,7 +33,6 @@
 
 <h2><%= link_to "My Orders",myorders_path(current_user) %></h2>
 
-
 <% if @addresses_has %>
 
 <p id="notice"><%= notice %></p>
@@ -71,9 +70,7 @@
         <td><%= address.pincode %></td>
         <td><%= address.state %></td>
         <td><%= address.user_id %></td>
-        <td><%= link_to 'Show', address %></td>
         <td><%= link_to 'Edit', edit_address_path(address) %></td>
-        <td><%= link_to 'Destroy', address, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     <% end %>

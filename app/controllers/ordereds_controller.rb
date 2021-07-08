@@ -19,6 +19,7 @@ class OrderedsController < ApplicationController
     @ordered = Ordered.new
     @order_item=OrderItem.find(params[:order_id])
     @total=(@order_item.product.cost).to_i * @order_item.quantity.to_i
+    
   end
 
   # GET /ordereds/1/edit
