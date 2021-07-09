@@ -2,6 +2,7 @@ class Api::V1::OrderedsController < ApplicationController
   before_action :set_ordered, only: %i[ show edit update destroy ]
   respond_to :json
   protect_from_forgery with: :null_session
+  skip_before_action :verify_authenticity_token, only:[:webhook, :index, :create]
   def index
     @ordereds = Ordered.all
     respond_with @ordereds
@@ -14,7 +15,7 @@ class Api::V1::OrderedsController < ApplicationController
 
   # POST /ordereds or /ordereds.json
   def create
-    @ordered = ordered.new(ordered_params)
+    @ordered = Ordered.build(ordered_params)
 
     if @ordered.save
       respond_with json: @ordered
@@ -47,7 +48,7 @@ class Api::V1::OrderedsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ordered
-      @ordered = ordered.find(params[:id])
+      @ordered = Ordered.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

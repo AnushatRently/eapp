@@ -1,25 +1,18 @@
-ActiveAdmin.register OrderItem do
+ActiveAdmin.register Address do
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :quantity, :product_id, :user_id, :order_id
+  # permit_params :name, :age, :phone_number, :door_no, :street, :city, :district, :pincode, :state, :user_id
   #
   # or
   #
   # permit_params do
-  #   permitted = [:quantity, :product_id, :user_id, :order_id]
+  #   permitted = [:name, :age, :phone_number, :door_no, :street, :city, :district, :pincode, :state, :user_id]
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  index do
-    selectable_column
-    id_column
-    column :quantity
-    column :product_id
-    column :user_id
-    actions
-  end
+  
 end

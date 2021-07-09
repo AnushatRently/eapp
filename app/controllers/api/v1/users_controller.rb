@@ -1,46 +1,47 @@
-class UsersController < ApplicationController
+class Api::V1::UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
   respond_to :json
   protect_from_forgery with: :null_session
-
+  skip_before_action :verify_authenticity_token, only:[:webhook, :index, :create]
   def index
-    respond_with json:{user:User.all}
+    @users = User.all
+    render json:@users
   end
 
   def show
-    respond_to json: @user
+    render json: @user
   end
 
 
-  # POST /products or /products.json
+  # POST /users or /users.json
   def create
     @user = User.new(user_params)
 
     if @user.save
-      respond_to json: @user
+      render json: @user
     else
-      respond_to error: {error: 'Unable to create user.'}, status:400
+      render error: {error: 'Unable to create user.'}, status:400
     end
 
   end
 
-  # PATCH/PUT /products/1 or /products/1.json
+  # PATCH/PUT /users/1 or /users/1.json
   def update
     if @user
       @user.update(user_params)
-      respond_to json: {message: "User Successfully Updated."}, status:200
+      render json: {message: "User Successfully Updated."}, status:200
     else
-      respond_to message: {error: 'Unable to Update user.'}, status:400
+      render message: {error: 'Unable to Update user.'}, status:400
     end
   end
 
-  # DELETE /products/1 or /products/1.json
+  # DELETE /users/1 or /users/1.json
   def destroy
     if @user
       @user.destroy
-      respond_to json: {message: "User Successfully Deleted."}, status:200
+      render json: {message: "User Successfully Deleted."}, status:200
     else
-      respond_to message: {error: 'Unable to delete user.'}, status:400
+      render message: {error: 'Unable to delete user.'}, status:400
     end
   end
 
