@@ -22,7 +22,7 @@ class OrderItemsController < ApplicationController
 
   def create
     order_item=OrderItem.create(order_item_params)
-    redirect_to order_item_path(order_item)
+    redirect_to order_item_path(order_item.id)
   end
 
   private

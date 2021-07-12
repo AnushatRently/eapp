@@ -1,7 +1,7 @@
 class OrderedsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_ordered, only: %i[ show update destroy ]
-
+  before_action :set_order_item, only: %i[create]
   # GET /ordereds or /ordereds.json
   def index
     @ordereds = Ordered.all
@@ -19,7 +19,8 @@ class OrderedsController < ApplicationController
     @ordered = Ordered.new
     @order_item=OrderItem.find(params[:order_id])
     @total=(@order_item.product.cost).to_i * @order_item.quantity.to_i
-    
+
+
   end
 
   # GET /ordereds/1/edit
@@ -32,7 +33,6 @@ class OrderedsController < ApplicationController
   # POST /ordereds or /ordereds.json
   def create
     @ordered = Ordered.new(ordered_params)
-
     respond_to do |format|
       if @ordered.save
         format.html { redirect_to @ordered, notice: "Ordered was successfully created." }
@@ -75,5 +75,9 @@ class OrderedsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def ordered_params
       params.require(:ordered).permit(:user_id, :order_item_id, :total)
+    end
+
+    def set_order_item
+
     end
 end
