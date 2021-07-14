@@ -1,7 +1,7 @@
 class OrderedsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_ordered, only: %i[ show update destroy ]
-  before_action :set_order_item, only: %i[create]
+  before_action :set_ordered, only: %i[ show update destroy set_available]
+  after_action :set_available,only:%i[create update]
   # GET /ordereds or /ordereds.json
   def index
     @ordereds = Ordered.all
@@ -79,7 +79,9 @@ class OrderedsController < ApplicationController
       params.require(:ordered).permit(:user_id, :order_item_id, :total)
     end
 
-    def set_order_item
-
+    def set_available
+      @product=Product.find(@ordered.order_item.product_id)
+      Product.update(@product.id,available:(@product.available - @ordered.order_item.quantity))
     end
+
 end

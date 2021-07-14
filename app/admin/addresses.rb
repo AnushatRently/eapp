@@ -14,5 +14,33 @@ ActiveAdmin.register Address do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
+
+  index do
+    selectable_column
+    id_column
+    column :name
+    column :age
+    column :phone_number
+    column :door_no
+    column :street
+    column :city
+    column :district
+    column :pincode
+    column :state
+    column :user_id
+
+    actions
+  end
+  filter :name,as: :select
+  filter :user_id,as: :select
+  filter :age,as: :select
+  filter :phone_number,as: :select
+  filter :door_no,as: :select
+  filter :street,as: :select
+  filter :city,as: :select
+  filter :district,as: :select
+  filter :pincode,as: :select
+  filter :state,as: :select
   
+
 end

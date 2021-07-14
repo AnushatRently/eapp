@@ -23,5 +23,8 @@ ActiveAdmin.register Ordered do
     actions
   end
 
+  filter :user_id,as: :select
+  filter :order_item_id,as: :select
+  filter :total,as: :select
 
 end

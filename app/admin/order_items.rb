@@ -22,4 +22,8 @@ ActiveAdmin.register OrderItem do
     column :user_id
     actions
   end
+
+  filter :quantity,as: :select
+  filter :product_id,as: :select
+  filter :user_id,as: :select
 end

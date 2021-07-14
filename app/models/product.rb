@@ -5,4 +5,9 @@ class Product < ApplicationRecord
 
   validates :title,:description,:cost,:available, presence:true
 
+  def self.reduce_count
+    @product=Product.find(6)
+    @product.available=@product.available.to_i - 1
+  end
+
 end
