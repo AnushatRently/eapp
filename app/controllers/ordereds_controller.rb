@@ -18,6 +18,7 @@ class OrderedsController < ApplicationController
   def new
     @ordered = Ordered.new
     @order_item=OrderItem.find(params[:order_id])
+    session[:order_id]=params[:order_id]
     @total=(@order_item.product.cost).to_i * @order_item.quantity.to_i
 
 
@@ -33,6 +34,7 @@ class OrderedsController < ApplicationController
   # POST /ordereds or /ordereds.json
   def create
     @ordered = Ordered.new(ordered_params)
+    @order_item=OrderItem.find(session[:order_id])
     respond_to do |format|
       if @ordered.save
         format.html { redirect_to @ordered, notice: "Ordered was successfully created." }

@@ -1,3 +1,7 @@
+
+<br/>
+<br/>
+<br/>
 <h1><%=@product.title%></h1>
 
 <h1>Unit Cost : <%=@product.cost%></h1>
@@ -8,5 +12,6 @@
 <%= form.text_field:quantity,placeholder:"quantity" %>
 <%= form.submit%>
 <% end %>
-
-<%= link_to "Edit", edit_ordered_path(:id=>@ordered.id) %>
+<br/>
+<br/>
+<%= link_to "Edit", edit_ordered_path(:id=>@ordered.id),class:"btn btn-danger" %>

@@ -4,32 +4,36 @@
 
 
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Quantity</th>
-      <th>Image</th>
-      <th>Total</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @ordereds.each do |ordered| %>
-      <tr>
-        <% if current_user.id.to_i == ordered.user_id.to_i %>
-        <td><%= Product.find(ordered.order_item.product_id).title %></td>
-        <td><%= ordered.order_item.quantity %></td>
-        <td><%= image_tag(Product.find(ordered.order_item.product_id).img_url, :size => "260x180") %></td>
-        <td><%= ordered.total %></td>
-        <td><%= link_to 'Show', ordered %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container">
+<div class="container">
+<div class="container">
+<div class="container">
+<div class="container">
+<div class="container">
+<div class="jumbotron">
 
-<br>
+  <% @ordereds.each do |ordered| %>
+      <% if current_user.id.to_i == ordered.user_id.to_i %>
+      <h1 class="display-4" ><%=Product.find(ordered.order_item.product_id).title %></h1>
+      <h3 class="lead">
+        <%= Product.find(ordered.order_item.product_id).description %></h3><br/>
+        Quantity: <%= ordered.order_item.quantity%>
+      <h4 class="my-4">
+        Total: <%= ordered.total %></h4><br/>
+      <%= image_tag(Product.find(ordered.order_item.product_id).img_url, :size => "260x180") %><br/>
+      <br/>
+      <%= link_to 'Show', ordered ,class:"btn btn-primary" %> <%= link_to 'Destroy',ordered, class:"btn btn-danger",method: :delete, data: { confirm: 'Are you sure?' } %>
+      <br/>
+      <br/>
+      <%end%>
+  <% end %>
 
-<%= link_to 'New Order', shops_path, class:"btn-btn-secondary" %>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
