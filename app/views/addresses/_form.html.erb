@@ -11,56 +11,49 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
 
-  <div class="field">
-    <%= form.label :age %>
-    <%= form.number_field :age %>
+  <div class="col-sm-5"class="form-label">
+    <%= form.text_field :name, autofocus: true,class:"form-control",placeholder:"Name: " %>
   </div>
-
-  <div class="field">
-    <%= form.label :phone_number %>
-    <%= form.text_field :phone_number %>
+  <br/>
+  <div class="col-sm-5"class="form-label">
+    <%= form.number_field :age, autofocus: true,class:"form-control",placeholder:"Age: " %>
   </div>
-
-  <div class="field">
-    <%= form.label :door_no %>
-    <%= form.text_field :door_no %>
+  <br/>
+  <div class="col-sm-5"class="form-label">
+    <%= form.text_field :phone_number, autofocus: true,class:"form-control",placeholder:"Phone Number: " %>
   </div>
-
-  <div class="field">
-    <%= form.label :street %>
-    <%= form.text_field :street %>
+  <br/>
+  <div class="col-sm-5"class="form-label">
+    <%= form.text_field :door_no, autofocus: true,class:"form-control",placeholder:"Door no: " %>
   </div>
-
-  <div class="field">
-    <%= form.label :city %>
-    <%= form.text_field :city %>
+  <br/>
+  <div class="col-sm-5"class="form-label">
+    <%= form.text_field :street, autofocus: true,class:"form-control",placeholder:"Street: " %>
   </div>
-
-  <div class="field">
-    <%= form.label :district %>
-    <%= form.text_field :district %>
+  <br/>
+  <div class="col-sm-5"class="form-label">
+    <%= form.text_field :city, autofocus: true,class:"form-control",placeholder:"City: " %>
   </div>
-
-  <div class="field">
-    <%= form.label :pincode %>
-    <%= form.number_field :pincode %>
+  <br/>
+  <div class="col-sm-5"class="form-label">
+    <%= form.text_field :district, autofocus: true,class:"form-control",placeholder:"District: " %>
   </div>
-
-  <div class="field">
-    <%= form.label :state %>
-    <%= form.text_field :state %>
+  <br/>
+  <div class="col-sm-5"class="form-label">
+    <%= form.text_field :state, autofocus: true,class:"form-control",placeholder:"State: " %>
   </div>
+  <br/>
+  <div class="col-sm-5"class="form-label">
+    <%= form.number_field :pincode, autofocus: true,class:"form-control",placeholder:"PINCODE: " %>
+  </div>
+  <br/>
 
   <div class="field">
     <%= form.hidden_field :user_id, :value=>current_user.id %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class:"btn btn-primary"%>
   </div>
 <% end %>

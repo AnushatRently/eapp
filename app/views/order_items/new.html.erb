@@ -1,17 +1,33 @@
 <br/>
-<h1><%=@product.title%></h1>
-
-<h1>Unit Cost : <%=@product.cost%></h1>
-
-<%= image_tag(@product.img_url, :size => "260x180") %>
-<br/>
-<br/>
-<%= form_with model: @order_item do |form| %>
-<%= form.hidden_field:user_id, :value=>current_user.id %>
-<%= form.hidden_field:product_id, :value=> @product.id%>
-<div class="col-sm-5"class="form-label">
-  <%= form.number_field :quantity, class:"form-control",placeholder:"Quantity" %>
+<div class="card border-dark mb-3" style="max-width: 50rem;">
+  <br/>
+<div class="card mb-4" style="max-width: 800px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <%= image_tag(@product.img_url, :size => "260x180") %>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><%=@product.title%></h5>
+        <p class="card-text">Unit Cost:Rs.<%=@product.cost%></p>
+        <p class="card-text"><%= form_with model: @order_item do |form| %>
+        <%= form.hidden_field:user_id, :value=>current_user.id %>
+        <%= form.hidden_field:product_id, :value=> @product.id%>
+        <div class="col-sm-5"class="form-label">
+          <%= form.number_field :quantity, class:"form-control",placeholder:"Quantity" %>
+        </div>
+        <br/>
+        <%= form.submit class:"btn btn-success"%>
+      <%end%>
+      </div>
+    </div>
+  </div>
 </div>
+</div>
+
 <br/>
-<%= form.submit class:"btn btn-success"%>
-<% end %>
+<h2>About the item:</h2><br/>
+<%= @product.about %>
+<br/><br/>
+<h3> Overall Rating: <%= @avg%></h3><br/>
+<h3> Reviews: </h3><%= render "reviews/feedback" %>

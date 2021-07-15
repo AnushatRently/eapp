@@ -1,0 +1,37 @@
+
+
+
+<br/>
+<div class="container">
+<div class="container">
+<div class="container">
+<div class="container">
+<div class="container">
+<div class="container">
+<div class="row">
+
+  <% @reviews.each do |review| %>
+  <% if review.user_id == current_user.id %>
+  <% if review.product_id == @id %>
+      <div class="col-sm-4">
+        <div class="card border-dark mb-4" style="max-width: 25.6rem;">
+          <br/>
+            <div class="card",style="width: 25.5rem;">
+              <%= image_tag(@product.img_url, :size => "350x300") %><br/>
+            <div class="card-body">
+              <p class="card-text">
+              <%= @product.title %>  |  <%= @product.description %><br/>
+                Rs.<%= @product.cost %><br/>
+                Your Comment: <%= review.comment %><br/>
+                Rating Provided: <%= review.rating %>/5
+            <div class="card-footer">
+              <%= link_to 'Show', review,class:"btn btn-primary" %> <%= link_to 'Edit', edit_review_path(review),class:"btn btn-secondary" %>
+              <%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-danger" %>
+      <% end %>
+      <%end %>
+      <%end%>
+
+      <% if @review_user==nil and @review_product==nil %>
+
+      <%= link_to 'Add Review', new_review_path(:id=>@id),class:"btn btn-success" %>
+      <% end %>

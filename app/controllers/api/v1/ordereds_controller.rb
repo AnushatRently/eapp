@@ -1,4 +1,5 @@
 class Api::V1::OrderedsController < ApplicationController
+  before_action :doorkeeper_authorize!
   before_action :set_ordered, only: %i[ show edit update destroy ]
   respond_to :json
   protect_from_forgery with: :null_session

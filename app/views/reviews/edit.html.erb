@@ -1,0 +1,16 @@
+
+<br/><br/>
+
+<div class="card text-center">
+  <div class="card-header">
+    <h1> <%= @product.title %> </h1>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= @product.description %></h5>
+    <%= @product.about %><br/><br/>
+    <%= render 'form', review: @review %>
+  </div>
+  <div class="card-footer text-muted">
+
+  </div>
+</div>

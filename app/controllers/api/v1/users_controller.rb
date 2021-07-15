@@ -1,4 +1,5 @@
 class Api::V1::UsersController < ApplicationController
+before_action :doorkeeper_authorize!
   before_action :set_user, only: %i[ show edit update destroy ]
   respond_to :json
   protect_from_forgery with: :null_session
@@ -18,9 +19,10 @@ class Api::V1::UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      render json: @user
+      render json: {status: 'SUCCESS',message: "User Successfully Created.",data:@user}, status: :ok
     else
-      render error: {error: 'Unable to create user.'}, status:400
+      render json: {status: 'ERROR',message: "User not Created.",data:@user.errors}, status: :unprocessable_entity
+
     end
 
   end
@@ -29,9 +31,9 @@ class Api::V1::UsersController < ApplicationController
   def update
     if @user
       @user.update(user_params)
-      render json: {message: "User Successfully Updated."}, status:200
+      render json: {status: 'SUCCESS',message: "User Successfully Updated.",data:@user}, status: :ok
     else
-      render message: {error: 'Unable to Update user.'}, status:400
+      render json: {status: 'ERROR',message: "User not Updated.",data:@user.errors}, status: :unprocessable_entity
     end
   end
 
@@ -53,7 +55,7 @@ class Api::V1::UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:email , :password , :current_password,:password_confirmation , :role)
+      params.permit(:email,:password,:password_confirmation,:role)
     end
 
 end

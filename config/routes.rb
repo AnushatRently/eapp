@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
 
 
+  get 'myreview/index'
+  get 'myreview/show'
+  resources :reviews
+  use_doorkeeper 
   resources :myaddress,only:[:index,:show]
   resources :addresses
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -9,7 +13,6 @@ Rails.application.routes.draw do
 
   get 'seller_console/index'
   get 'home/index'
-  get 'products/reduce_count'
   resources :ordereds
   devise_for :users
   resources :products

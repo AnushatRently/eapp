@@ -10,24 +10,38 @@
 <div class="container">
 <div class="container">
 <div class="container">
-<div class="jumbotron">
+<div class="row">
 
   <% @products.each do |product| %>
   <% if current_user.id.to_i == product.user_id.to_i %>
+      <div class="col-sm-4">
+        <div class="card border-dark mb-4" style="max-width: 25.6rem;">
+          <br/>
+            <div class="card",style="width: 25.5rem;">
+              <%= image_tag(product.img_url, :size => "350x300") %><br/>
+            <div class="card-body">
+              <p class="card-text">
+              <%= product.title %>  |  <%= product.description %><br/>
+                <h4>Rs.<%= product.cost %> | Overall Rating:<%=product.rating%> </h4> <br/>
+              <%=  link_to 'Show', product, class:"btn btn-secondary" %> <%= link_to 'Edit', edit_product_path(product), class:"btn btn-success" %> <%= link_to 'Destroy', product,class:"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
+            <div class="card-footer">
 
-      <h1 class="display-4" ><%= product.title %></h1>
-      <h3 class="lead">
-        <%= product.description %></h3><br/>
-      <h4 class="my-4">
-        Cost: <%= product.cost %></h4><br/>
-      <%= image_tag(product.img_url, :size => "260x180") %><br/>
-      <br/>
-      Available Count: <%= product.available%> <br/>
-      <br/>
-      <%=  link_to 'Show', product, class:"btn btn-secondary" %> <%= link_to 'Edit', edit_product_path(product), class:"btn btn-success" %> <%= link_to 'Destroy', product,class:"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
-      <br/>
+      <% if product.available < 1 %>
+      <div class="p-3 mb-2 bg-light text-danger">Sold</div>
+      <% elsif product.available <5 %>
+      <div class="p-3 mb-2 bg-light text-warning">  Qunatity:<%=product.available%>  |  Limited!!!</div>
+      <% else %>
+      <div class="p-3 mb-2 bg-light text-success">  Qunatity:<%=product.available%>  |  Available</div>
+      <% end %>
+      </div>
+          </div>
+          </div>
+          </div>
 
-      <br/>
+
+
+
       <% end %>
   <% end %>
 

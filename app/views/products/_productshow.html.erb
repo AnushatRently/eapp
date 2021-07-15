@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="container">
+    <div class="container">
+      <div class="container">
+
+<div class="row">
+  <% @products.each do |product| %>
+
+
+
+  <div class="col-sm-4">
+    <div class="card border-dark mb-3" style="max-width: 25.4rem;">
+      <br/>
+        <div class="card",style="width: 25rem;">
+        <%= image_tag(product.img_url, :size => "350x300") %><br/>
+
+        <div class="card-body">
+          <p class="card-text">
+            <%= product.title %> | <%= product.description %>
+          <h4>Rs. <%= product.cost %> | Overall Rating: </h4>
+          <% if product.available > 0 %>
+          <%= link_to 'Collect', new_order_item_path(:prod_id => product.id),class:"btn btn-secondary" %>
+          <%else%>
+          <%= link_to 'Collect',"",class:"btn btn-secondary" %>
+          <% end %>
+        </div>
+      </div>
+      <br/>
+      <div class="card-footer">
+
+<% if product.available < 1 %>
+<div class="p-3 mb-2 bg-light text-danger">Unavailable</div>
+<% elsif product.available <5 %>
+<div class="p-3 mb-2 bg-light text-warning">Limited!!!</div>
+<% else %>
+<div class="p-3 mb-2 bg-light text-success">In Stock</div>
+<% end %>
+
+
+
+  </div>
+</div>
+</div>
+  <% end %>
+</div>

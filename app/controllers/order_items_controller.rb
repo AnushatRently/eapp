@@ -1,8 +1,11 @@
 class OrderItemsController < ApplicationController
+
   before_action :authenticate_user!
   def new
     @order_item=OrderItem.new
     @product=Product.find(params[:prod_id])
+    @avg=Review.where(product_id: params[:prod_id]).average(:rating)
+    @reviews=Review.all
   end
 
   def edit

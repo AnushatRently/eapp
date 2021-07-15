@@ -1,42 +1,8 @@
 <br/>
 
-<h1>Available Products</h1>
+<h1>Products</h1>
 
 <br/>
-<div class="container">
-<div class="container">
-<div class="container">
-<div class="container">
-<div class="container">
-<div class="container">
-<div class="jumbotron">
-
-  <% @products.each do |product| %>
 
 
-      <h1 class="display-4" ><%= product.title %></h1>
-      <h3 class="lead">
-        <%= product.description %></h3><br/>
-        <br/> Available Count: <%= product.available %><br/><br/>
-      <h4 class="my-4">
-        Cost: <%= product.cost %></h4><br/>
-      <%= image_tag(product.img_url, :size => "260x180") %><br/>
-      <br/>
-      <%if product.available >0 %>
-      <%= link_to 'Visit', new_order_item_path(:prod_id => product.id),class:"btn btn-primary" %>
-      <%else%>
-      <div class="p-3 mb-2 bg-danger text-white">Unavailable</div>
-      <%end%>
-      <br/>
-      <br/>
-  <% end %>
-
-
-
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+<%= render "products/productshow" %>

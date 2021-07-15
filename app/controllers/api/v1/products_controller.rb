@@ -5,7 +5,7 @@ class Api::V1::ProductsController < ApplicationController
 
   def index
     @products = Product.all
-    respond_with json: @products
+    respond_with json: @products,only:[:id,:title,:description,:cost,:user_id,:available]
   end
 
   def show
