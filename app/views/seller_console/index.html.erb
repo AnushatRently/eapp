@@ -17,12 +17,17 @@
       <div class="col-sm-4">
         <div class="card border-dark mb-4" style="max-width: 25.6rem;">
           <br/>
+
             <div class="card",style="width: 25.5rem;">
-              <%= image_tag(product.img_url, :size => "350x300") %><br/>
+              <% if product.img_presence.to_i==1 %>
+               <%= image_tag(product.img_url, :size => "350x300") %> <br/>
+               <% else %>
+               <%= image_tag("", :size => "350x300") %> <br/>
+            <% end %>
             <div class="card-body">
               <p class="card-text">
               <%= product.title %>  |  <%= product.description %><br/>
-                <h4>Rs.<%= product.cost %> | Overall Rating:<%=product.rating%> </h4> <br/>
+                <h5>Rs.<%= product.cost %> | Average Rating: <%=product.rating%>/5 </h5> <br/>
               <%=  link_to 'Show', product, class:"btn btn-secondary" %> <%= link_to 'Edit', edit_product_path(product), class:"btn btn-success" %> <%= link_to 'Destroy', product,class:"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
             </div>
             <div class="card-footer">

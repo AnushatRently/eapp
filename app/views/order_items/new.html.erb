@@ -4,7 +4,11 @@
 <div class="card mb-4" style="max-width: 800px;">
   <div class="row g-0">
     <div class="col-md-4">
+      <% if @product.img_presence.to_i == 1 %>
       <%= image_tag(@product.img_url, :size => "260x180") %>
+      <% else %>
+      <%= image_tag("", :size => "260x180") %>
+      <% end %>
     </div>
     <div class="col-md-8">
       <div class="card-body">
@@ -29,5 +33,5 @@
 <h2>About the item:</h2><br/>
 <%= @product.about %>
 <br/><br/>
-<h3> Overall Rating: <%= @avg%></h3><br/>
+<h3> Average Rating: <%= @avg%>/5</h3><br/>
 <h3> Reviews: </h3><%= render "reviews/feedback" %>

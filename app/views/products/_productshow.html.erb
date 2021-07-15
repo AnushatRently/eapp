@@ -12,12 +12,15 @@
     <div class="card border-dark mb-3" style="max-width: 25.4rem;">
       <br/>
         <div class="card",style="width: 25rem;">
+        <% if product.img_presence ==1 %>
         <%= image_tag(product.img_url, :size => "350x300") %><br/>
-
+        <% else %>
+        <%= image_tag("", :size => "350x300") %><br/>
+        <% end %>
         <div class="card-body">
           <p class="card-text">
             <%= product.title %> | <%= product.description %>
-          <h4>Rs. <%= product.cost %> | Overall Rating: </h4>
+          <h4>Rs. <%= product.cost %> | Average Rating: <%=product.rating%>/5</h4>
           <% if product.available > 0 %>
           <%= link_to 'Collect', new_order_item_path(:prod_id => product.id),class:"btn btn-secondary" %>
           <%else%>

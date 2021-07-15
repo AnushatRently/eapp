@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'myreview/index'
   get 'myreview/show'
   resources :reviews
-  use_doorkeeper 
+  use_doorkeeper
   resources :myaddress,only:[:index,:show]
   resources :addresses
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   get 'home/index'
   resources :ordereds
   devise_for :users
-  resources :products
+  resources :products do
+    collection {post:import}
+  end
   resources :shops, only:[:index,:show]
   resources :order_items
   resources :orders

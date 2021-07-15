@@ -61,6 +61,11 @@ class ProductsController < ApplicationController
     end
   end
 
+  def import
+    Product.import(params[:file])
+    redirect_to root_path,notice: "Products Imported"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
@@ -69,6 +74,6 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:title, :description, :cost, :img_url, :user_id, :available,:about,:rating )
+      params.require(:product).permit(:title, :description, :cost, :img_url, :user_id, :available,:about,:rating,:img_presence )
     end
 end

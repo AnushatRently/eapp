@@ -6,6 +6,11 @@ class Product < ApplicationRecord
 
   validates :title,:description,:cost,:available, presence:true
 
+  def self.import(file)
+    CSV.foreach(file.path,headers:true) do |row|
+      Product.create! row.to_hash
 
+    end
+  end
 
 end

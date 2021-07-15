@@ -15,7 +15,11 @@
         <h3>Quantity: <%= @ordered.order_item.quantity %></h3>
       <h4 class="my-4">
         Total: <%= @ordered.total %></h4><br/>
-    <%= image_tag((Product.find(@id)).img_url, :size => "260x180") %>
+        <% if (Product.find(@id)).img_presence == 1 %>
+          <%= image_tag((Product.find(@id)).img_url, :size => "260x180") %>
+        <% else %>
+          <%= image_tag("", :size => "260x180") %>
+        <% end %>
       <br/>
       <br/>
       <%= link_to 'Edit', edit_order_item_path(:prod_id => @id, :id=>@ordered.order_item.id,:od=>@ordered.id ),class:"btn btn-success" %> <%= link_to 'Back', shops_path, class:"btn btn-success"%>
