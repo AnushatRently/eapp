@@ -4,7 +4,9 @@ class Product < ApplicationRecord
   belongs_to:user
   has_one_attached:img_url
 
-  validates :title,:description,:cost,:available, presence:true
+  validates :title,:description,:cost,:available,:about,:img_presence, presence:true
+  validates :cost,:available ,numericality:true
+  validates :cost, numericality:{greater_than:0}
 
   def self.import(file)
     CSV.foreach(file.path,headers:true) do |row|

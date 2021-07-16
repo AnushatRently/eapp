@@ -12,7 +12,11 @@
         <div class="card border-dark mb-4" style="max-width: 25.6rem;">
           <br/>
             <div class="card",style="width: 25.5rem;">
+                <% if @review.product.img_presence==1 %>
               <%= image_tag(@review.product.img_url, :size => "350x300") %><br/>
+              <% else %>
+                <%= image_tag("", :size => "350x300") %><br/>
+              <% end %>
             <div class="card-body">
               <p class="card-text">
               <%= @review.product.title %>  |  <%= @review.product.description %><br/>
@@ -22,4 +26,3 @@
             <div class="card-footer">
               <%= link_to 'Edit', edit_review_path(@review),class:"btn btn-secondary" %> <%= link_to 'Back', root_path,class:"btn btn-danger" %>
             </div>
-            
