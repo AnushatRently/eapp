@@ -8,13 +8,16 @@ ActiveAdmin.register User do
   permit_params :email, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :role, :available
 
   scope :all, :default => true
-  
+
+  scope :banned_users do |users|
+    users.where("locked_at is not null")
+  end
 
  action_item :lock,only: :edit do
     if user.access_locked?
       link_to 'Unlock User', unlock_admin_user_path(user),method: :put
     else
-      link_to 'Lock User', unlock_admin_user_path(user),method: :put
+      link_to 'Lock User', lock_admin_user_path(user),method: :put
     end
   end
 
@@ -45,8 +48,20 @@ ActiveAdmin.register User do
     id_column
     column :email
     column :role
+    column :name
+    column :locked_at if params[:scope] == "banned_authors"
     actions
   end
+
+  show do
+    attributes_table do
+      row :email
+      row :role
+      row :name
+    end
+  end
+
+  
 
   filter :role,as: :select
   filter :id,as: :select

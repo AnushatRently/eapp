@@ -4,7 +4,7 @@ class Product < ApplicationRecord
   belongs_to:user
   has_one_attached:img_url
 
-  validates :title,:description,:cost,:available,:about,:img_presence, presence:true
+  validates :title,:description,:cost,:user_id,:available,:about,:img_presence, presence:true
   validates :cost,:available ,numericality:true
   validates :cost, numericality:{greater_than:0}
 
