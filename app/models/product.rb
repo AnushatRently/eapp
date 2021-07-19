@@ -4,15 +4,23 @@ class Product < ApplicationRecord
   belongs_to:user
   has_one_attached:img_url
 
-  validates :title,:description,:cost,:user_id,:available,:about,:img_presence, presence:true
+  validates :title,:description,:cost,:available,:about,:img_presence, presence:true
   validates :cost,:available ,numericality:true
   validates :cost, numericality:{greater_than:0}
 
   def self.import(file)
     CSV.foreach(file.path,headers:true) do |row|
       Product.create! row.to_hash
-
     end
   end
+
+  def self.to_csv
+    CSV.generate do |csv|
+      csv << column_names
+      all.each do |product|
+        csv << product.attributes.values_at(*column_names)
+    end
+  end
+end
 
 end

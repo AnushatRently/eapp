@@ -11,3 +11,10 @@
 <%= file_field_tag :file, class:"btn btn-primary"%><br/><br/>
 <%= submit_tag "Upload Products",class:"btn btn-success" %>
 <% end %>
+<br/>
+<br/>
+<br/>
+
+<h3> Export Products </h3>
+<br/>
+<%= link_to "Download Products",products_path(format:"csv") ,class:"btn btn-primary"%>
