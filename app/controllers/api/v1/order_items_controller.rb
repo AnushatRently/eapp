@@ -2,13 +2,20 @@ class Api::V1::OrderItemsController < ApplicationController
   before_action :doorkeeper_authorize!
   before_action :set_order_item, only: %i[ show edit update destroy ]
 
-  def index
+
+  def all_order_items
     @order_items = OrderItem.all
-    respond_with json:@order_items
+    render json:@order_items
+  end
+
+  def index
+    @user = User.find(params[:id])
+    @order_items = @user.order_items
+    render json: @order_items
   end
 
   def show
-    respond_with json:@order_item
+    render json:@order_item
   end
 
 
@@ -17,9 +24,9 @@ class Api::V1::OrderItemsController < ApplicationController
     @order_item = OrderItem.new(order_item_params)
 
     if @order_item.save
-      respond_with json: @order_item
+      render json: @order_item
     else
-      respond_with error: {error: 'Unable to create user.'}, status:400
+      render error: {error: 'Unable to create user.'}, status:400
     end
 
   end
@@ -28,9 +35,9 @@ class Api::V1::OrderItemsController < ApplicationController
   def update
     if @order_item
       @order_item.update(order_item_params)
-      respond_with json: {message: "User Successfully Updated."}, status:200
+      render json: {message: "User Successfully Updated."}, status:200
     else
-      respond_with message: {error: 'Unable to Update user.'}, status:400
+      render message: {error: 'Unable to Update user.'}, status:400
     end
   end
 
@@ -38,9 +45,9 @@ class Api::V1::OrderItemsController < ApplicationController
   def destroy
     if @order_item
       @order_item.destroy
-      respond_with json: {message: "User Successfully Deleted."}, status:200
+      render json: {message: "User Successfully Deleted."}, status:200
     else
-      respond_with message: {error: 'Unable to delete user.'}, status:400
+      render message: {error: 'Unable to delete user.'}, status:400
     end
   end
 

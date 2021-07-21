@@ -15,7 +15,7 @@
                 <% if @review.product.img_presence==1 %>
               <%= image_tag(@review.product.img_url, :size => "350x300") %><br/>
               <% else %>
-                <%= image_tag("", :size => "350x300") %><br/>
+                <%= image_tag("no_image/no_image.png", :size => "350x300") %><br/>
               <% end %>
             <div class="card-body">
               <p class="card-text">

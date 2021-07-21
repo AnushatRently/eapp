@@ -4,8 +4,9 @@ class Api::V1::ProductsController < ApplicationController
   protect_from_forgery with: :null_session
 
   def index
-    @products = Product.all
-    respond_with json: @products,only:[:id,:title,:description,:cost,:user_id,:available]
+    @user=User.find(params[:id])
+    @products = @user.products
+    respond_with json: @products,only:[:id,:title,:description,:cost,:user_id,:available],except:[:img_url]
   end
 
   def show
@@ -48,7 +49,7 @@ class Api::V1::ProductsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
-      @product = product.find(params[:id])
+      @product = Product.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

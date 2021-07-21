@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   get 'seller_console/index'
   get 'home/index'
+  get '/api/v1/order_items' => 'api/v1/order_items#all_order_items'
+   get '/api/v1/users/:id/order_items' => 'api/v1/order_items#index',as: "user_order_items"
   resources :ordereds
   devise_for :users
   resources :products do

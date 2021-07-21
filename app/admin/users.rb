@@ -13,7 +13,7 @@ ActiveAdmin.register User do
     users.where("locked_at is not null")
   end
 
- action_item :lock,only: :edit do
+ action_item :lock,only: :show do
     if user.access_locked?
       link_to 'Unlock User', unlock_admin_user_path(user),method: :put
     else
@@ -61,7 +61,7 @@ ActiveAdmin.register User do
     end
   end
 
-  
+
 
   filter :role,as: :select
   filter :id,as: :select

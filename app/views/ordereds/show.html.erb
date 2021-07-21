@@ -18,7 +18,7 @@
         <% if (Product.find(@id)).img_presence == 1 %>
           <%= image_tag((Product.find(@id)).img_url, :size => "260x180") %>
         <% else %>
-          <%= image_tag("", :size => "260x180") %>
+          <%= image_tag("no_image/no_image.png", :size => "260x180") %>
         <% end %>
       <br/>
       <br/>
