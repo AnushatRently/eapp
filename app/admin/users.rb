@@ -51,16 +51,15 @@ ActiveAdmin.register User do
     selectable_column
     id_column
     column :email
-    column :role
+    column "role_as",:role_as
     column :name
-    column :locked_at if params[:scope] == "banned_authors"
     actions
   end
 
   show do
     attributes_table do
       row :email
-      row :role
+      row :role_as
       row :name
     end
   end

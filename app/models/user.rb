@@ -19,4 +19,13 @@ class User < ApplicationRecord
       user&.valid_password?(password) ? user : nil
     end
 
+  def role_as
+
+    if role.to_i == 1
+      "Buyer"
+    else
+      "Seller"
+    end
+  end
+
 end
