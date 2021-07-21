@@ -1,11 +1,11 @@
 namespace :import do
-  desc "Import users as CSV"
-  task user: :environment do
-    file_path = File.join Rails.root, "user.csv"
+  desc "Import Product as CSV"
+  task product_import_from_csv: :environment do
+    file_path = File.join Rails.root, "products.csv"
     CSV.foreach(file_path, headers: true) do |row|
-        user = User.create(email: row["email"],password: row["password"],password_confirmation: row["password_confirmation"],name: row["name"], role: row["role"])
-        puts("#{user.email} - creation failed - #{user.errors.full_messages.join(';')}") if user.errors.any?
-       puts("#{user.email} - created successfully") if not user.errors.any?
+        product=Product.create(title:row["title"],description:row["description"],cost:row["cost"], available:row["available"],user_id:row["user_id"],about:row["about"],rating:row["rating"])
+        puts("#{product.title} - creation failed - #{product.errors.full_messages.join(';')}") if product.errors.any?
+       puts("#{product.title} - created successfully") if not product.errors.any?
     end
   end
   end

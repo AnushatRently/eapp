@@ -23,14 +23,18 @@ ActiveAdmin.register User do
 
   member_action :lock,method: :put do
     user = User.find(params[:id])
-    user.lock_access!
-    redirect_to edit_admin_user_path(user)
+    begin
+      user.lock_access!
+    rescue
+      redirect_to admin_user_path(user)
+    end
+
   end
 
   member_action :unlock,method: :put do
     user = User.find(params[:id])
     user.unlock_access!
-    redirect_to edit_admin_user_path(user)
+    redirect_to admin_user_path(user)
   end
 
 

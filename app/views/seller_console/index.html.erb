@@ -11,7 +11,7 @@
 <div class="container">
 <div class="container">
 <div class="row">
-
+<% if Product.find_by(user_id:current_user.id) %>
   <% @products.each do |product| %>
   <% if current_user.id.to_i == product.user_id.to_i %>
       <div class="col-sm-4">
@@ -19,16 +19,16 @@
           <br/>
 
             <div class="card",style="width: 25.5rem;">
-              <% if product.img_presence.to_i==1 %>
+              <% begin %>
                <%= image_tag(product.img_url, :size => "350x300") %> <br/>
-               <% else %>
+               <% rescue %>
                <%= image_tag("no_image/no_image.png", :size => "350x300") %> <br/>
             <% end %>
             <div class="card-body">
               <p class="card-text">
               <%= product.title %>  |  <%= product.description %><br/>
                 <h5>Rs.<%= product.cost %> | Average Rating: <%=product.rating%>/5 </h5> <br/>
-              <%=  link_to 'Show', product, class:"btn btn-secondary" %> <%= link_to 'Edit', edit_product_path(product), class:"btn btn-success" %> <%= link_to 'Destroy', product,class:"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%=  link_to 'Show', product, class:"btn btn-secondary" %> <%= link_to 'Edit', edit_product_path(product), class:"btn btn-success" %> <%= link_to 'Remove', product,class:"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
             </div>
             <div class="card-footer">
 
@@ -49,7 +49,16 @@
 
       <% end %>
   <% end %>
+<% else %>
+<div class="container" >
+  <p class="alert alert-danger">Empty!!!</p>
+  <br/>
+  <br/>
+ <%= link_to "Add Product",new_product_path, class:"btn btn-success" %>
+</div>
 
+
+<% end %>
 
 </div>
 </div>

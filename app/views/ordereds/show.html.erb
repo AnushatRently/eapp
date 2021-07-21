@@ -15,9 +15,9 @@
         <h3>Quantity: <%= @ordered.order_item.quantity %></h3>
       <h4 class="my-4">
         Total: <%= @ordered.total %></h4><br/>
-        <% if (Product.find(@id)).img_presence == 1 %>
+        <% begin %>
           <%= image_tag((Product.find(@id)).img_url, :size => "260x180") %>
-        <% else %>
+        <% rescue %>
           <%= image_tag("no_image/no_image.png", :size => "260x180") %>
         <% end %>
       <br/>

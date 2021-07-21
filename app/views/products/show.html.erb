@@ -23,10 +23,9 @@
 <p>
   <strong>Image:</strong>
   <br/>
-<% if @product.img_presence.to_i == 1 %>
+<% begin %>
 <%= image_tag(@product.img_url, :size => "260x180") %>
-<% end %>
-<%  if  @product.img_presence.to_i == 0 %>
+<% rescue %>
 <%= image_tag("no_image/no_image.png", :size => "260x180") %>
 <% end %>
 </p>

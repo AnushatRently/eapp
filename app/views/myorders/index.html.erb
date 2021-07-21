@@ -19,16 +19,16 @@
         <div class="card border-dark mb-3" style="max-width: 25.4rem;">
           <br/>
             <div class="card",style="width: 25rem;">
-              <% if Product.find(ordered.order_item.product_id).img_presence==1 %>
+              <% begin %>
               <%= image_tag(Product.find(ordered.order_item.product_id).img_url, :size => "350x300") %>
-              <% else %>
+              <% rescue %>
               <%= image_tag("no_image/no_image.png", :size => "350x300") %>
               <% end %>
             <div class="card-body">
               <p class="card-text">
                 <%=Product.find(ordered.order_item.product_id).title %> |<%= Product.find(ordered.order_item.product_id).description %><br/>
                 Quantity: <%= ordered.order_item.quantity%> | Total: <%= ordered.total %><br/><br/>
-              <%= link_to 'Show', ordered ,class:"btn btn-primary" %> <%= link_to 'Destroy',ordered, class:"btn btn-danger",method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%= link_to 'Show', ordered ,class:"btn btn-primary" %> <%= link_to 'Remove',ordered, class:"btn btn-danger",method: :delete, data: { confirm: 'Are you sure?' } %>
 
               <%= link_to ' Review',myreview_index_path(:id=>ordered.order_item.product_id),class:"btn btn-success"%>
 

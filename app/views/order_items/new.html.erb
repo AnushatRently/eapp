@@ -4,9 +4,9 @@
 <div class="card mb-4" style="max-width: 800px;">
   <div class="row g-0">
     <div class="col-md-4">
-      <% if @product.img_presence.to_i == 1 %>
+      <% begin %>
       <%= image_tag(@product.img_url, :size => "260x180") %>
-      <% else %>
+      <% rescue %>
       <%= image_tag("no_image/no_image.png", :size => "260x180") %>
       <% end %>
     </div>

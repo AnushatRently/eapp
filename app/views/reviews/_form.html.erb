@@ -1,7 +1,7 @@
 <%= form_with(model: review) do |form| %>
   <% if review.errors.any? %>
     <div id="error_explanation">
-      <h2><p class="alert alert-danger">Error Occured: </p></h2>
+    
       <ul>
         <% review.errors.each do |error| %>
         <p class="alert alert-danger"><%= error.full_message %></p>

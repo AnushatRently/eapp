@@ -11,7 +11,10 @@ class OrderItemsController < ApplicationController
   def edit
     @order_item =OrderItem.find(params[:id])
     @product=Product.find(params[:prod_id])
+    @od=params[:od]
+    if (params[:od].to_i >0)
     @ordered=Ordered.find(params[:od])
+    end
   end
 
   def update

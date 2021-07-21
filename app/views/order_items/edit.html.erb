@@ -14,4 +14,6 @@
 <% end %>
 <br/>
 <br/>
+<% if @od.to_i > 0 %>
 <%= link_to "Edit", edit_ordered_path(:id=>@ordered.id),class:"btn btn-danger" %>
+<% end %>

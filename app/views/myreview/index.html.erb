@@ -17,9 +17,9 @@
         <div class="card border-dark mb-4" style="max-width: 25.6rem;">
           <br/>
             <div class="card",style="width: 25.5rem;">
-                <% if @product.img_presence==1 %>
+                <% begin %>
               <%= image_tag(@product.img_url, :size => "350x300") %><br/>
-              <% else %>
+              <% rescue %>
                 <%= image_tag("no_image/no_image.png", :size => "350x300") %><br/>
               <% end %>
             <div class="card-body">
@@ -35,6 +35,4 @@
       <%end %>
       <%end%>
 
-      <% if @review_user==nil or @review_product  ==nil %>
-      <%= link_to 'Add Review', new_review_path(:id=>@id),class:"btn btn-success" %>
-      <% end %>
+    

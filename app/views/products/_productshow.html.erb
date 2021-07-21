@@ -12,9 +12,9 @@
     <div class="card border-dark mb-3" style="max-width: 25.4rem;">
       <br/>
         <div class="card",style="width: 25rem;">
-        <% if product.img_presence ==1 %>
+        <% begin %>
         <%= image_tag(product.img_url, :size => "350x300") %><br/>
-        <% else %>
+        <% rescue %>
         <%= image_tag("no_image/no_image.png", :size => "350x300") %><br/>
         <% end %>
         <div class="card-body">
@@ -22,9 +22,9 @@
             <%= product.title %> | <%= product.description %>
           <h4>Rs. <%= product.cost %> | Average Rating: <%=product.rating%>/5</h4>
           <% if product.available > 0 %>
-          <%= link_to 'Collect', new_order_item_path(:prod_id => product.id),class:"btn btn-secondary" %>
+          <%= link_to 'Buy', new_order_item_path(:prod_id => product.id),class:"btn btn-success" %>
           <%else%>
-          <%= link_to 'Collect',"",class:"btn btn-secondary" %>
+          <%= link_to 'Sold Out',"",class:"btn btn-secondary" %>
           <% end %>
         </div>
       </div>

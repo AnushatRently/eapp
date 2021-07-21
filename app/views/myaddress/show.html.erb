@@ -1,19 +1,14 @@
-<h1>My Addresses</h1>
+<div class="container" >
+  <br/>
+<h1 class="display-4" >My Address</h1>
 
 
 <br/>
-<div class="container">
-<div class="container">
-<div class="container">
-<div class="container">
-<div class="container">
-<div class="container">
-<div class="jumbotron">
 
   <% @addresses.each do |address| %>
     <% if address.user_id.to_i == current_user.id.to_i %>
 
-      <h2 class="display-4" ><%= address.name %></h2>
+      <h5 class="display-4" ><%= address.name %></h5>
       <br/>
       <h3 class="lead">
 
