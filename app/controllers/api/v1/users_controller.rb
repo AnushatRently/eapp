@@ -55,7 +55,7 @@ before_action :doorkeeper_authorize!
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.permit(:email,:password,:password_confirmation,:role)
+      params.permit(:email,:password,:password_confirmation,:role,:name)
     end
 
 end

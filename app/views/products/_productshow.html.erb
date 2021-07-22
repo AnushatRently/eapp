@@ -9,9 +9,9 @@
 
 
   <div class="col-sm-4">
-    <div class="card border-dark mb-3" style="max-width: 25.4rem;">
+    <div class="card border-dark mb-4" style="max-width: 25.6rem;">
       <br/>
-        <div class="card",style="width: 25rem;">
+        <div class="card",style="width: 25.5rem;">
         <% begin %>
         <%= image_tag(product.img_url, :size => "350x300") %><br/>
         <% rescue %>
@@ -20,7 +20,7 @@
         <div class="card-body">
           <p class="card-text">
             <%= product.title %> | <%= product.description %>
-          <h4>Rs. <%= product.cost %> | Average Rating: <%=product.rating%>/5</h4>
+          <h5>Rs. <%= product.cost %> | Average Rating: <%=product.rating%>/5</h5>
           <% if product.available > 0 %>
           <%= link_to 'Buy', new_order_item_path(:prod_id => product.id),class:"btn btn-success" %>
           <%else%>

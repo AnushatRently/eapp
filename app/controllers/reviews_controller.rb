@@ -20,7 +20,7 @@ class ReviewsController  < ApplicationController
 
   # GET /reviews/1/edit
   def edit
-    @product=Product.find(session[:id])
+    @product=Product.find(params[:prod_id])
   end
 
   # POST /reviews or /reviews.json

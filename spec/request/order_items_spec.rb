@@ -2,7 +2,7 @@ require 'rails_helper'
 RSpec.describe 'Order_Items_Request', type: :request do
 before{
   @current_user=User.first_or_create!(email: 'anushseller@gmail.com',password: "anushk",password_confirmation:"anushk",role:0,name:'Anush')
-  @current_product=Product.first_or_create( title: 'Test Product', description: 'Test description ',cost: 400.0,user_id: @current_user.id,available: 30,about:"good",rating:3,img_presence:2)
+  @current_product=Product.first_or_create( title: 'Test Product', description: 'Test description ',cost: 400.0,user_id: @current_user.id,available: 30,about:"good",rating:3)
 }
 
 let(:valid_attributes) do
@@ -63,7 +63,7 @@ let(:valid_attributes) do
        delete order_item_path(order_item)
      }
    end
-   
+
  end
 
 

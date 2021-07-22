@@ -1,6 +1,5 @@
 
 
-
 <br/>
 <div class="container">
 <div class="container">
@@ -29,10 +28,8 @@
                 Your Comment: <%= review.comment %><br/>
                 Rating Provided: <%= review.rating %>/5
             <div class="card-footer">
-              <%= link_to 'Show', review,class:"btn btn-primary" %> <%= link_to 'Edit', edit_review_path(review),class:"btn btn-secondary" %>
+              <%= link_to 'Show', review,class:"btn btn-primary" %> <%= link_to 'Edit', edit_review_path(review,:prod_id=>@product.id),class:"btn btn-secondary" %>
               <%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-danger" %>
       <% end %>
       <%end %>
       <%end%>
-
-    

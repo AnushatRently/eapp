@@ -5,7 +5,7 @@ RSpec.describe Product,type: :model do
   current_user=User.first_or_create!(email: 'anush@gmail.com',password: "anushk",password_confirmation:"anushk",role:0,name:'Anush')
 
   before do
-    @product=Product.new(title:"product",description:"good",cost:300,user_id:current_user.id,available:30,about:"good",rating:3,img_presence:0)
+    @product=Product.new(title:"product",description:"good",cost:300,user_id:current_user.id,available:30,about:"good",rating:3)
   end
 
 
@@ -44,7 +44,7 @@ RSpec.describe Product,type: :model do
     expect(@product).to be_valid
   end
 
-  
+
 
   it "has numerical cost" do
     @product.cost = "Hello"

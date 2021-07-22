@@ -15,7 +15,7 @@ before{
        available: 30,
        about:"good",
        rating:3,
-       img_presence:2
+
      }
    end
 
@@ -28,7 +28,7 @@ before{
        available: 30,
        about:"good",
        rating:3,
-       img_presence:2
+
      }
    end
 
@@ -45,16 +45,7 @@ before{
     end
   end
 
-  describe 'GET /show' do
-    it 'renders a successful response' do
-      sign_in @current_user
-      product = Product.new(valid_attributes)
-      product.user_id=@current_user.id
-      product.save
-      get product_url(product)
-      expect(response).to be_successful
-    end
-  end
+  
 
   describe "GET /edit" do
      it "renders edit path" do
