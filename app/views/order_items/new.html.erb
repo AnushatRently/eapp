@@ -1,16 +1,15 @@
 <br/>
-<div class="card border-dark mb-3" style="max-width: 50rem;">
-  <br/>
-<div class="card mb-4" style="max-width: 800px;">
+<div class="card border-light mb-7" style="max-width: 40rem;">
+<div class="card mb-4" style="max-width: 650px;">
   <div class="row g-0">
-    <div class="col-md-4">
+    <div class="col-md-6">
       <% begin %>
-      <%= image_tag(@product.img_url, :size => "260x180") %>
+      <%= image_tag(@product.img_url, :size => "260x210") %>
       <% rescue %>
       <%= image_tag("no_image/no_image.png", :size => "260x180") %>
       <% end %>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-6">
       <div class="card-body">
         <h5 class="card-title"><%=@product.title%></h5>
         <p class="card-text">Unit Cost:Rs.<%=@product.cost%></p>

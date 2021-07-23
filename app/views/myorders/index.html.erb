@@ -16,13 +16,12 @@
 
 <% if current_user.id.to_i == ordered.user_id.to_i %>
       <div class="col-sm-4">
-        <div class="card border-dark mb-3" style="max-width: 25.4rem;">
-          <br/>
+        <div class="card border-dark mb-4" style="max-width: 25.4rem;">
             <div class="card",style="width: 25rem;">
               <% begin %>
-              <%= image_tag(Product.find(ordered.order_item.product_id).img_url, :size => "350x300") %>
+              <%= image_tag(Product.find(ordered.order_item.product_id).img_url, :size => "365x300") %>
               <% rescue %>
-              <%= image_tag("no_image/no_image.png", :size => "350x300") %>
+              <%= image_tag("no_image/no_image_available.png", :size => "364x300") %>
               <% end %>
             <div class="card-body">
               <p class="card-text">

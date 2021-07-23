@@ -1,18 +1,12 @@
-<div class="card border-dark mb-3" style="max-width: 70rem;">
+<div class="card border-dark mb-3" style="max-width: 50rem;">
 <br/>
 <div class="container">
 <%= form_with(model: product) do |form| %>
   <% if product.errors.any? %>
     <div id="error_explanation">
-
-    
-
-
-      <ul>
         <% product.errors.each do |error| %>
       <p class="alert alert-danger"><%= error.full_message%></p>
         <% end %>
-      </ul>
     </div>
   <% end %>
 

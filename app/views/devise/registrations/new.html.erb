@@ -1,6 +1,5 @@
 <br/><br/>
-<div class="card border-dark mb-3" style="max-width: 70rem;">
-<div class="card text-center">
+<div class="card border-dark mb-3" style="max-width: 30rem;">
   <div class="card-header">
     Create My Account
   </div>
@@ -15,21 +14,15 @@
       <% end %>
     <br/>
         <%= f.password_field :password, autocomplete: "new-password",class:"form-control",placeholder:"password" %>
-        <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %>
       <br/>
         <%= f.password_field :password_confirmation, autocomplete: "new-password",class:"form-control",placeholder:"password_confirmation" %>
         <br/>
-        <%= f.label :your_role %><br/>
-        <%= f.radio_button :role, 0 %> Seller<br />
-        <%= f.radio_button :role, 1 %> Buyer<br /><br/>
+        (<%= f.label :your_role %>) <%= f.radio_button :role, 0 %> Seller <%= f.radio_button :role, 1 %> Buyer<br /><br/>
 
         <%= f.submit "Sign up",class:"btn btn-primary" %>
       <%end%>
   </div>
   <div class="card-footer text-muted">
-    <br/>
 <%= render "devise/shared/links" %>
   </div>
 </div>

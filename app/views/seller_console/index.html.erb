@@ -16,13 +16,11 @@
   <% if current_user.id.to_i == product.user_id.to_i %>
       <div class="col-sm-4">
         <div class="card border-dark mb-4" style="max-width: 25.6rem;">
-          <br/>
-
             <div class="card",style="width: 25.5rem;">
               <% begin %>
-               <%= image_tag(product.img_url, :size => "350x300") %> <br/>
+               <%= image_tag(product.img_url, :size => "365x300") %> <br/>
                <% rescue %>
-               <%= image_tag("no_image/no_image.png", :size => "350x300") %> <br/>
+               <%= image_tag("no_image/no_image_available.png", :size => "350x300") %> <br/>
             <% end %>
             <div class="card-body">
               <p class="card-text">
@@ -35,9 +33,9 @@
       <% if product.available < 1 %>
       <div class="p-3 mb-2 bg-light text-danger">Sold</div>
       <% elsif product.available <5 %>
-      <div class="p-3 mb-2 bg-light text-warning">  Qunatity:<%=product.available%>  |  Limited!!!</div>
+      <div class="p-3 mb-2 bg-light text-warning">  Quantity:<%=product.available%>  |  Limited!!!</div>
       <% else %>
-      <div class="p-3 mb-2 bg-light text-success">  Qunatity:<%=product.available%>  |  Available</div>
+      <div class="p-3 mb-2 bg-light text-success">  Quantity:<%=product.available%>  |  Available</div>
       <% end %>
       </div>
           </div>
@@ -51,7 +49,7 @@
   <% end %>
 <% else %>
 <div class="container" >
-  <p class="alert alert-danger">Empty!!!</p>
+  <p class="alert alert-danger">No Product is Uploaded</p>
   <br/>
   <br/>
  <%= link_to "Add Product",new_product_path, class:"btn btn-success" %>

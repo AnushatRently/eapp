@@ -5,17 +5,13 @@
 
 <div class="row">
   <% @products.each do |product| %>
-
-
-
   <div class="col-sm-4">
     <div class="card border-dark mb-4" style="max-width: 25.6rem;">
-      <br/>
         <div class="card",style="width: 25.5rem;">
         <% begin %>
-        <%= image_tag(product.img_url, :size => "350x300") %><br/>
+        <%= image_tag(product.img_url, :size => "380x300") %><br/>
         <% rescue %>
-        <%= image_tag("no_image/no_image.png", :size => "350x300") %><br/>
+        <%= image_tag("no_image/no_image_available.png", :size => "380x300") %><br/>
         <% end %>
         <div class="card-body">
           <p class="card-text">
@@ -28,8 +24,7 @@
           <% end %>
         </div>
       </div>
-      <br/>
-      <div class="card-footer">
+
 
 <% if product.available < 1 %>
 <div class="p-3 mb-2 bg-light text-danger">Unavailable</div>
@@ -41,7 +36,7 @@
 
 
 
-  </div>
+
 </div>
 </div>
   <% end %>
