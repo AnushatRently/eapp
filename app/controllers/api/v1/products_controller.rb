@@ -2,15 +2,15 @@ class Api::V1::ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
   respond_to :json
   protect_from_forgery with: :null_session
+  skip_before_action :verify_authenticity_token, only:[:webhook, :index, :create]
 
   def index
-    @user=User.find(params[:id])
-    @products = @user.products
-    respond_with json: @products,only:[:id,:title,:description,:cost,:user_id,:available],except:[:img_url]
+    @products = Product.all
+    render json: @products,only:[:id,:title,:description,:cost,:user_id,:available],status: :ok
   end
 
   def show
-    respond_with json: @product
+    render json: @product,only:[:id,:title,:description,:cost,:user_id,:available],status: :ok
   end
 
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_21_115600) do
+ActiveRecord::Schema.define(version: 2021_07_27_052257) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -81,6 +81,13 @@ ActiveRecord::Schema.define(version: 2021_07_21_115600) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "oauth_access_grants", force: :cascade do |t|
     t.integer "resource_owner_id", null: false
     t.integer "application_id", null: false
@@ -139,6 +146,15 @@ ActiveRecord::Schema.define(version: 2021_07_21_115600) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "payment_details", force: :cascade do |t|
+    t.string "name"
+    t.string "phone_number"
+    t.string "bank_name"
+    t.string "card_number"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "title"
     t.string "description"
@@ -157,6 +173,13 @@ ActiveRecord::Schema.define(version: 2021_07_21_115600) do
     t.string "product_id"
     t.string "comment"
     t.integer "rating"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_payment_details", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "payment_detail_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

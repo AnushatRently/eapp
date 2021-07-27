@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
 
 
+  resources :likes
   get 'myreview/index'
   get 'myreview/show'
   resources :reviews
@@ -14,9 +15,13 @@ Rails.application.routes.draw do
   get 'seller_console/index'
   get 'home/index'
   get '/api/v1/order_items' => 'api/v1/order_items#all_order_items'
-   get '/api/v1/users/:id/order_items' => 'api/v1/order_items#index',as: "user_order_items"
+  get '/api/v1/users/:id/order_items' => 'api/v1/order_items#index',as: "user_order_items"
+  get 'api/v1/payment_details' => 'api/v1/payment_details#all_payment_details'
+  get '/api/v1/users/:id/payment_details' => 'api/v1/payment_details#index',as: "user_payment_details"
+  get '/api/v1/users/:id/liked_products' => 'api/v1/liked_products#index',as: "user_liked_products"
+  get '/api/v1/products/:id/liked_users' => 'api/v1/liked_users#index',as: "product_liked_users"
   resources :ordereds
-  devise_for :users
+  devise_for :users, controllers: { liked_users: 'liked_users' }
   resources :products do
     collection {post:import}
   end
@@ -24,6 +29,7 @@ Rails.application.routes.draw do
   resources :order_items
   resources :orders
   resources :myorders, only:[:index]
+
 
   namespace :api do
     namespace :v1 do

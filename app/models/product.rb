@@ -3,6 +3,8 @@ class Product < ApplicationRecord
     has_many:reviews, dependent: :destroy
   belongs_to:user
   has_one_attached:img_url
+  has_many:likes
+  has_many:liked_users,through: :likes,class_name:"User"
 
   validates :title,:description,:cost,:available,:about, presence:true
   validates :cost,:available ,numericality:true

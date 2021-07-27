@@ -9,6 +9,10 @@ class User < ApplicationRecord
   has_many:addresses, dependent: :destroy
   has_many:reviews, dependent: :destroy
   validates :role,:name , presence:true
+  has_many:likes
+  has_many:liked_products,through: :likes,class_name:"Product"
+  has_many:user_payment_details
+  has_many:payment_details,through: :user_payment_details
 
   scope :locked,-> { where("locked_at != ?",nil)}
 

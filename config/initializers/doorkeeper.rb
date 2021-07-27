@@ -12,7 +12,7 @@ Doorkeeper.configure do
     # Example implementation:
     #  User.find_by(id: session[:user_id]) || redirect_to(new_user_session_url)
   #end
-  resource_owner_from_credentials do |_routes|
+    resource_owner_from_credentials do |_routes|
       User.authenticate(params[:email], params[:password])
     end
 
