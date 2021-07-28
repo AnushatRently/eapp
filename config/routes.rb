@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   get 'myreview/index'
   get 'myreview/show'
   resources :reviews
-  use_doorkeeper
+  use_doorkeeper do
+    skip_controllers :authorizations, :applications, :authorized_applications
+  end
   resources :myaddress,only:[:index,:show]
   resources :addresses
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -20,6 +22,8 @@ Rails.application.routes.draw do
   get '/api/v1/users/:id/payment_details' => 'api/v1/payment_details#index',as: "user_payment_details"
   get '/api/v1/users/:id/liked_products' => 'api/v1/liked_products#index',as: "user_liked_products"
   get '/api/v1/products/:id/liked_users' => 'api/v1/liked_users#index',as: "product_liked_users"
+  get '/api/v1/products' => 'api/v1/products#all_products'
+  get '/api/v1/users/:id/products' => 'api/v1/products#index',as: "user_products"
   resources :ordereds
   devise_for :users, controllers: { liked_users: 'liked_users' }
   resources :products do

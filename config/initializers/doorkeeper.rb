@@ -16,6 +16,9 @@ Doorkeeper.configure do
       User.authenticate(params[:email], params[:password])
     end
 
+    resource_owner_authenticator do
+      User.find_by(id: session[:user_id]) || redirect_to(new_user_session_url)
+    end
 
     grant_flows %w[password]
 

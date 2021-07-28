@@ -1,16 +1,19 @@
-class Api::V1::LikedUsersController < ApplicationController
-  before_action :doorkeeper_authorize!
 
-
+module Api
+  module V1
+  class LikedUsersController < Api::V1::ApplicationController
 
   def index
       @product = Product.find(params[:id])
-      if @product.user_id == 2
+      if @product.user_id == current_user.id
         @liked_users = @product.liked_users
         render json: @liked_users
       else
-        render json: {status: 'ERROR',message: "Invalid user"}, status: :not_found
+        render json: {status: "Unauthorized",message: "Invalid User"}, status: :unauthorized
       end
+end
+
+end
 
 end
 
