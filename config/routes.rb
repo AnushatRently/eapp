@@ -20,8 +20,8 @@ Rails.application.routes.draw do
   get '/api/v1/users/:id/order_items' => 'api/v1/order_items#index',as: "user_order_items"
   get 'api/v1/payment_details' => 'api/v1/payment_details#all_payment_details'
   get '/api/v1/users/:id/payment_details' => 'api/v1/payment_details#index',as: "user_payment_details"
-  get '/api/v1/users/:id/liked_products' => 'api/v1/liked_products#index',as: "user_liked_products"
-  get '/api/v1/products/:id/liked_users' => 'api/v1/liked_users#index',as: "product_liked_users"
+  get '/api/v1/users/:id/liked_products' => 'api/v1/likes#liked_products',as: "user_liked_products"
+  get '/api/v1/products/:id/liked_users' => 'api/v1/likes#liked_users',as: "product_liked_users"
   get '/api/v1/products' => 'api/v1/products#all_products'
   get '/api/v1/users/:id/products' => 'api/v1/products#index',as: "user_products"
   resources :ordereds
