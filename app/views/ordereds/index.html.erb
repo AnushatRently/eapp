@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Ordereds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Order item</th>
+      <th>Total</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ordereds.each do |ordered| %>
+      <tr>
+        <td><%= ordered.user_id %></td>
+        <td><%= ordered.order_item_id %></td>
+        <td><%= ordered.total %></td>
+        <td><%= link_to 'Show', ordered %></td>
+        <td><%= link_to 'Edit', edit_ordered_path(ordered) %></td>
+        <td><%= link_to 'Destroy', ordered, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ordered', new_ordered_path %>

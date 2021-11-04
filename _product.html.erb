@@ -1,0 +1,20 @@
+<div class="card-group">
+  <% @products.each do |product| %>
+
+  <div class="card border-dark mb-3" style="max-width: 30rem;">
+
+<div class="col-sm-15">
+        <div class="card",style="width: 25rem;">
+        <%= image_tag(product.img_url, :size => "420x300") %><br/>
+
+        <div class="card-body">
+          <p class="card-text">
+            <%= product.title %> | <%= product.description %>
+          <h4>Rs. <%= product.cost %> | Overall Rating: </h4>
+          <%= link_to 'Collect', new_order_item_path(:prod_id => product.id),class:"btn btn-primary" %>
+        </div>
+      </div>
+</div>
+</div>
+  <% end %>
+</div>

@@ -1,0 +1,6 @@
+<h2> Ordering <%=@order_item.quantity%> <%=@order_item.product.title%> </h2>
+
+<h2>Total Cost: <%= @total %> </h2>
+
+
+<%= render 'form', ordered: @ordered %>

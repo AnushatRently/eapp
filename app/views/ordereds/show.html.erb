@@ -1,0 +1,42 @@
+
+<br/>
+
+<div class="container">
+<div class="container">
+<div class="container">
+<div class="container">
+<div class="container">
+<div class="container">
+<div class="jumbotron">
+
+      <h1 class="display-4" ><%= (Product.find(@id)).title %></h1>
+      <h3 class="lead">
+        <%= Product.find(@id).description %></h3><br/>
+        <h3>Quantity: <%= @ordered.order_item.quantity %></h3>
+      <h4 class="my-4">
+        Total: <%= @ordered.total %></h4><br/>
+        <% begin %>
+          <%= image_tag((Product.find(@id)).img_url, :size => "260x180") %>
+        <% rescue %>
+          <%= image_tag("no_image/no_image.png", :size => "260x180") %>
+        <% end %>
+      <br/>
+      <br/>
+      <%= link_to 'Edit', edit_order_item_path(:prod_id => @id, :id=>@ordered.order_item.id,:od=>@ordered.id ),class:"btn btn-success" %> <%= link_to 'Back', shops_path, class:"btn btn-success"%>
+
+</div>
+
+<br/>
+<h1> Delivery Address </h1>
+
+    <% @addresses.each do |address| %>
+
+        <% if address.user_id.to_i == current_user.id.to_i %>
+        <%= address.name %><br/>
+        <br/><%= address.door_no %>,<%= address.street %>,<%= address.city %>,<%= address.district %>,<%= address.state %>,PINCODE: <%= address.pincode %><br/>
+        <br/>
+        CONTACT: <%= address.phone_number %><br/>
+        <br/>
+        <%= link_to 'Change Address', edit_address_path(address),class:"btn btn-danger" %>
+        <% end %>
+    <% end %>

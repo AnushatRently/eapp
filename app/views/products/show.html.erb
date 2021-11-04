@@ -1,0 +1,43 @@
+
+
+<p>
+  <strong>Title:</strong>
+  <%= @product.title %>
+</p>
+
+<p>
+  <strong>Short Description:</strong>
+  <%= @product.description %>
+</p>
+
+<p>
+  <strong>About:</strong>
+  <%= @product.about %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @product.cost %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <br/>
+<% begin %>
+<%= image_tag(@product.img_url, :size => "260x180") %>
+<% rescue %>
+<%= image_tag("no_image/no_image.png", :size => "260x180") %>
+<% end %>
+</p>
+
+<p>
+  <strong>Available Count:</strong>
+  <%= @product.available %>
+</p>
+
+<p>
+  <strong>Average rating:</strong>
+  <%= @product.rating %>/5
+</p>
+
+<%= link_to 'Edit', edit_product_path(@product), class:"btn btn-success" %> <%= link_to 'Back', seller_console_index_path, class:"btn btn-danger"%>

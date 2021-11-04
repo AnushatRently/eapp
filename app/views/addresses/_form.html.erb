@@ -1,0 +1,58 @@
+<%= form_with(model: address) do |form| %>
+  <% if address.errors.any? %>
+    <div id="error_explanation">
+
+      <ul>
+        <% address.errors.each do |error| %>
+           <p class="alert alert-danger"><%= error.full_message %></p>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="col-sm-10"class="form-label">
+    <%= form.text_field :name, autofocus: true,class:"form-control",placeholder:"Name: " %>
+  </div>
+  <br/>
+  <div class="col-sm-10"class="form-label">
+    <%= form.number_field :age, autofocus: true,class:"form-control",placeholder:"Age: " %>
+  </div>
+  <br/>
+  <div class="col-sm-10"class="form-label">
+    <%= form.text_field :phone_number, autofocus: true,class:"form-control",placeholder:"Phone Number: " %>
+  </div>
+  <br/>
+  <div class="col-sm-10"class="form-label">
+    <%= form.text_field :door_no, autofocus: true,class:"form-control",placeholder:"Door no: " %>
+  </div>
+  <br/>
+  <div class="col-sm-10"class="form-label">
+    <%= form.text_field :street, autofocus: true,class:"form-control",placeholder:"Street: " %>
+  </div>
+  <br/>
+  <div class="col-sm-10"class="form-label">
+    <%= form.text_field :city, autofocus: true,class:"form-control",placeholder:"City: " %>
+  </div>
+  <br/>
+  <div class="col-sm-10"class="form-label">
+    <%= form.text_field :district, autofocus: true,class:"form-control",placeholder:"District: " %>
+  </div>
+  <br/>
+  <div class="col-sm-10"class="form-label">
+    <%= form.text_field :state, autofocus: true,class:"form-control",placeholder:"State: " %>
+  </div>
+  <br/>
+  <div class="col-sm-10"class="form-label">
+    <%= form.number_field :pincode, autofocus: true,class:"form-control",placeholder:"PINCODE: " %>
+  </div>
+  <br/>
+
+  <div class="field">
+    <%= form.hidden_field :user_id, :value=>current_user.id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class:"btn btn-primary"%>
+  </div>
+<% end %>

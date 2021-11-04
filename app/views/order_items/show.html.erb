@@ -1,0 +1,9 @@
+<br/>
+<h1><%=@order_item.product.title%></h1>
+
+<h1>Unit prize <%=@order_item.product.cost%></h1>
+
+<h1> Count: <%=@order_item.quantity%></h1>
+
+
+<h3><%= link_to "Confirm Your Order", new_ordered_path(:order_id=>@order_item.id),class:"btn btn-success" %></h3>

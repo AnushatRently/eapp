@@ -1,0 +1,66 @@
+<div class="container" >
+  <br/>
+<h1 class="display-4" >My Address</h1>
+
+
+<br/>
+
+  <% @addresses.each do |address| %>
+    <% if address.user_id.to_i == current_user.id.to_i %>
+
+      <h5 class="display-4" ><%= address.name %></h5>
+      <br/>
+      <h3 class="lead">
+
+
+
+        <p>
+          <strong>Phone number:</strong>
+          <%= address.phone_number %>
+        </p>
+
+        <p>
+          <strong>Door no:</strong>
+          <%= address.door_no %>
+        </p>
+
+        <p>
+          <strong>Street:</strong>
+          <%= address.street %>
+        </p>
+
+        <p>
+          <strong>City:</strong>
+          <%= address.city %>
+        </p>
+
+        <p>
+          <strong>District:</strong>
+          <%= address.district %>
+        </p>
+
+        <p>
+          <strong>State:</strong>
+          <%= address.state %>
+        </p>
+        <p>
+          <strong>Pincode:</strong>
+          <%= address.pincode %>
+        </p>
+
+
+
+      <br/>
+      <%= link_to 'Edit', edit_address_path(address),class:"btn btn-success" %>
+      <br/>
+      <%end%>
+  <% end %>
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

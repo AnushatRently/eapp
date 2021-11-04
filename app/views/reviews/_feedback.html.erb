@@ -1,0 +1,5 @@
+<% @reviews.each do |review| %>
+<% if review.product_id.to_i == @product.id.to_i %>
+<%= review.user.name%>: <%= review.comment %><br/>
+<% end %>
+<%end%>

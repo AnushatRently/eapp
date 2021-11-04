@@ -1,0 +1,28 @@
+<br/><br/>
+<div class="card border-dark mb-3" style="max-width: 30rem;">
+  <div class="card-header">
+    Create My Account
+  </div>
+  <div class="card-body">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+        <%= f.text_field :name, autofocus: true,class:"form-control",placeholder:"Enter your name: " %>
+      <br/>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control",placeholder:"email" %>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+    <br/>
+        <%= f.password_field :password, autocomplete: "new-password",class:"form-control",placeholder:"password" %>
+      <br/>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password",class:"form-control",placeholder:"password_confirmation" %>
+        <br/>
+        (<%= f.label :your_role %>) <%= f.radio_button :role, 0 %> Seller <%= f.radio_button :role, 1 %> Buyer<br /><br/>
+
+        <%= f.submit "Sign up",class:"btn btn-primary" %>
+      <%end%>
+  </div>
+  <div class="card-footer text-muted">
+<%= render "devise/shared/links" %>
+  </div>
+</div>

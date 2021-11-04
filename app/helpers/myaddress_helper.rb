@@ -1,0 +1,2 @@
+module MyaddressHelper
+end

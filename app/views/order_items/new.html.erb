@@ -1,0 +1,36 @@
+<br/>
+<div class="card border-light mb-7" style="max-width: 40rem;">
+<div class="card mb-4" style="max-width: 650px;">
+  <div class="row g-0">
+    <div class="col-md-6">
+      <% begin %>
+      <%= image_tag(@product.img_url, :size => "260x210") %>
+      <% rescue %>
+      <%= image_tag("no_image/no_image.png", :size => "260x180") %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <div class="card-body">
+        <h5 class="card-title"><%=@product.title%></h5>
+        <p class="card-text">Unit Cost:Rs.<%=@product.cost%></p>
+        <p class="card-text"><%= form_with model: @order_item do |form| %>
+        <%= form.hidden_field:user_id, :value=>current_user.id %>
+        <%= form.hidden_field:product_id, :value=> @product.id%>
+        <div class="col-sm-5"class="form-label">
+          <%= form.number_field :quantity, class:"form-control",placeholder:"Quantity" %>
+        </div>
+        <br/>
+        <%= form.submit class:"btn btn-success"%>
+      <%end%>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<br/>
+<h2>About the item:</h2><br/>
+<%= @product.about %>
+<br/><br/>
+<h3> Average Rating: <%= @product.rating%>/5</h3><br/>
+<h3> Reviews: </h3><%= render "reviews/feedback" %>
